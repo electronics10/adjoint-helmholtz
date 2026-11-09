@@ -1,2 +1,4 @@
 whiteboard.*
 reference/
+.venv/
+__pycache__/
