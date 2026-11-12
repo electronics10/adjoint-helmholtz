@@ -1,7 +1,7 @@
 [project]
 name = "adjoint-helmholtz"
 version = "0.1.0"
-description = "Add your description here"
+description = "2D FDFD Helmholtz solver with hand-derived adjoint gradients"
 readme = "README.md"
 authors = [
     { name = "electronics10", email = "73749204+electronics10@users.noreply.github.com" }
