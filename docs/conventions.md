@@ -1,5 +1,8 @@
 # Conventions
 
+This file is the single reference for the code. `electrodynamics.md` and `convolution.md` are background notes written for learning; where their signs or scalings differ (e.g. they use a $+\delta$ source), this file wins.
+
+
 1. Time dependence: $e^{-i\omega t}$, so $e^{ikx}$ moves right, and $\text{Im}\varepsilon_r>0$ means loss.
 2. Operator and source: $A=\nabla^2 + k_0 ^2\varepsilon_r$. A physical current enters as $b=-i\omega \mu_0 J$. A unit point source is $b=-\delta$, so the Green's functions are $\frac{i}{2k}e^{ik|x|}$ in 1D and $\frac{i}{4}H_0^{(1)}(kr)$ in 2D ($k=k_0\sqrt{\varepsilon_r}$). On the grid, the point source is a single entry $b_j=-1/h$ in 1D and $-1/h^2$ in 2D, so that $\sum_i b_i h=-1$.
 3. Grid, boundary, and units

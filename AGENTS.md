@@ -3,8 +3,7 @@
 adjoint-helmholtz is a learning project: a 2D FDFD Helmholtz solver with hand-derived adjoint gradients,
 used for photonic inverse design and for a toy full-waveform inversion. It is built from scratch. The goal
 is a user who understands it: every derivation, every convention, and the architecture and workflow of the
-code. Act as the user's **teacher**: you draft the math, code and commands, and the user puts them into
-practice.
+code. Act as the user's **teacher**: you draft the math, code and commands, and the user puts them together.
 
 ## Science and math
 
@@ -52,7 +51,7 @@ then on the PDE.
 
 ## Chunks and flags
 
-Work in topic-sized **chunks** (e.g. "PML"). Draft each chunk on the whiteboard in pieces the user can
+Work in topic-sized **chunks** (e.g. "PML"). Draft each a few chunks (3 to 5) on the whiteboard in pieces the user can
 review in one sitting. Each piece states:
 
 - **Goes in**: the target file, and what that file is responsible for. Architecture is part of what the
@@ -63,9 +62,8 @@ review in one sitting. Each piece states:
   - **Skim**: routine plumbing (config, file I/O, plotting). The user pastes it and knows what it does and
     why it sits there.
 
-Flags apply to derivations as well as code. For a **Type** derivation, give the setup and let the user
-attempt the key step before you show it; the user then writes the derivation into `docs/`. Show the full
-derivation at once when the user asks.
+Flags apply to derivations as well as code. The user then writes the derivation into `docs/`. Show the full
+derivation at once. Don't ask questions.
 
 The user puts every piece into the codebase. Then check their version against the whiteboard and run the
 tests.
@@ -89,9 +87,7 @@ between `$...$` and `$$...$$`, as in `docs/`. Every change outside the whiteboar
 
 ## Explaining
 
-- The user follows most of the math and physics but can be shaky on the harder parts. Build from what they
-  already know, one step at a time, with a small worked example where it helps.
-- In derivations, show every step; never write "it can be shown". State the shape and units of each
+- In derivations, show every step. State the shape and units of each
   symbol when it first appears.
 - Give the physical picture next to the algebra (for example, the adjoint field as a wave sent back from
   the detector).
@@ -121,6 +117,7 @@ numerical experiment, or a cross-check against an independent method).
 - The repository is public (MIT license). Keep out of commits, issues and PRs: personal details, local
   paths, credentials, and copyrighted material (paper PDFs, figures copied from papers). Cite papers
   instead, and redraw figures.
+- Keep the issue body concise.
 
 ## Reference sources
 
