@@ -3,17 +3,12 @@
 import numpy as np
 import scipy.sparse as sp
 
-from .pml import stretch_factors
+from .operators import second_difference
 
 
 def helmholtz_matrix(eps_r, h, k0, n_pml):
     """Sparse A, shape (n, n), with the PML rows of docs/fdfd1d.md, Eq. 2. Rows are not scaled."""
-    n = len(eps_r)
-    s, s_half = stretch_factors(n, n_pml, h, k0)
-    left = 1 / (s * s_half[:-1] * h**2)  # coefficient of u_{i-1}
-    right = 1 / (s * s_half[1:] * h**2)  # coefficient of u_{i+1}
-    diag = k0**2 * eps_r - left - right
-    return sp.diags([left[1:], diag, right[:-1]], [-1, 0, 1], format="csc")
+    return (second_difference(len(eps_r), h, k0, n_pml) + sp.diags(k0**2 * eps_r)).tocsc()
 
 
 def point_source(n, j, h):
