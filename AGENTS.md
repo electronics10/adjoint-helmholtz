@@ -51,7 +51,7 @@ then on the PDE.
 
 ## Chunks and flags
 
-Work in topic-sized **chunks** (e.g. "PML"). Draft each a few chunks (3 to 5) on the whiteboard in pieces the user can
+Work in topic-sized **chunks** (e.g. "PML"). Draft a few chunks (3 to 5) on the whiteboard in pieces the user can
 review in one sitting. Each piece states:
 
 - **Goes in**: the target file, and what that file is responsible for. Architecture is part of what the

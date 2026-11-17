@@ -1,0 +1,38 @@
+"""Adjoint gradient against central finite differences (docs/adjoint.md)."""
+
+import numpy as np
+from scipy.sparse.linalg import spsolve
+
+from adjoint_helmholtz.adjoint import intensity_and_gradient
+from adjoint_helmholtz.helmholtz1d import helmholtz_matrix, point_source
+
+K0, H, N_PML, N = 2 * np.pi, 1 / 20, 10, 101
+
+
+def setup():
+    """A random slab between a point source (node 20) and a probe (node 80)."""
+    rng = np.random.default_rng(0)
+    eps_r = np.ones(N)
+    eps_r[40:60] = 2 + 0.3 * rng.random(20)
+    b = point_source(N, 20, H)
+    c = np.zeros(N)
+    c[80] = 1
+    return eps_r, b, c
+
+
+def intensity(eps_r, b, c):
+    u = spsolve(helmholtz_matrix(eps_r, H, K0, N_PML), b)
+    return abs(np.vdot(c, u)) ** 2
+
+
+def test_gradient_matches_central_differences():
+    eps_r, b, c = setup()
+    _, grad = intensity_and_gradient(helmholtz_matrix(eps_r, H, K0, N_PML), b, c, K0)
+    step = 1e-4
+    # Nodes 5 and 95 are in the PML: a wrong transpose (A instead of A^T) only shows there.
+    for i in [5, 30, 45, 55, 70, 95]:
+        plus, minus = eps_r.copy(), eps_r.copy()
+        plus[i] += step
+        minus[i] -= step
+        fd = (intensity(plus, b, c) - intensity(minus, b, c)) / (2 * step)
+        assert abs(fd - grad[i]) < 1e-6 * np.max(np.abs(grad)), i
