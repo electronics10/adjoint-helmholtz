@@ -80,8 +80,7 @@ between `$...$` and `$$...$$`, as in `docs/`. Every change outside the whiteboar
 ## Commands
 
 - The user runs every command that changes state: installing, git (branch, commit, push, merge), `gh`
-  (issues, PRs), optimization and inversion runs, and creating or deleting files. Give the exact command
-  and say what it does.
+  (issues, PRs), optimization and inversion runs, and creating or deleting files. Give the exact command. Don't give comments alongside the commands.
 - Run read-only checks yourself: reading, searching, diffs, running tests. Show the command when it is
   worth learning.
 
